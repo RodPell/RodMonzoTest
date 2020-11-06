@@ -4,16 +4,19 @@
 --  Populate 'stg_total_users_by_date' table with pre-canned 'total users' metrics.
 --  
 --  Note 1:
+--    In reality, this ETL would use the account_status_history table proposed as part of my answer to the first question.
+--    However, I present this alternative - confident that this is sufficient for a proof of concept type exercise.
+--    (Generally focusing on the data modellng aspects of the test over data engineering)
+--    I am aware the final step logic only works due to there being a 1:1 relationship between user_id and account_id in the dataset.
+--
+--    Please see page "C.4 Next Steps" in the documentation for more info.
+--
+--  Note 2:
 --    I tried this as a WHILE loop, running through all dates in range (~3.5 years).
 --    It was taking AGES.  I cancelled the job after 5 mins and nothing produced.
 --
 --    Hence I ran it manually 20 times - for my sample 20 days  01-Feb-2020 - 20-Feb-2020
 --    This also massively reduces the load on BigQuery - and therefore any costs.
---
---  Note 2:
---    I am aware the final step logic only works due to there being a 1:1 relationship between user_id and account_id in the dataset.
---    As an improvement, and access to a proper ETL tool with the abaility to reliably process a 3 year batch of data,
---    I would re-factor to be resiliant to 1User : ManyAccount scenarios.
 --
 --     Created:  Rod Pell
 --
